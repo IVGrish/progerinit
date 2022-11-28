@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteBase /
+    RewriteCond %{HTTP_HOST} ^www.progerinit.by
+    RewriteRule (.*) http://progerinit.by/$1 [R=301,L]
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    RewriteRule ^index\.php$ http://progerinit.by/ [R=301,L]
+</IfModule>
+
+ServerSignature Off
+AddDefaultCharset UTF-8
+
+RewriteRule ^ad?$ ad.php
+RewriteRule ^contacts?$ contacts.php
+
+ErrorDocument 404 /404.php
